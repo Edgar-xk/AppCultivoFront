@@ -1,0 +1,7 @@
+{
+  "name": "AppCultivoFront",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
