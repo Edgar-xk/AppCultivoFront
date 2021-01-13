@@ -1,17 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+ 
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<div class="SectorC" *ngFor="let item of sectores">
+
+    <div *ngFor="let espacio of item.Espacios" class="ContainerE">
+      
+      <button class="BtnEspacio" *ngIf="espacio._id!=null;else elseBlock">{{espacio.Nombre}}</button>
+      
+     
+    </div>
+    <div class="BtnTitle">
+      <button class="SectorTitle">{{item.Nombre}}</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 </ion-content>

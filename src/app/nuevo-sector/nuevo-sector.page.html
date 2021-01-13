@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>NuevoSector</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="hola">
+  
+
+  <ion-card>
+    
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Nombre del Sector"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select placeholder="Seleccione 1" id="SelectTipo">
+          <ion-select-option value="1">Huerto</ion-select-option>
+          <ion-select-option value="2">Maseteros</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        
+        <ion-input placeholder="Número de espacios" type="number"></ion-input>
+      </ion-item>
+      <ion-button (click)="saludar()">Guardar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+</ion-content>

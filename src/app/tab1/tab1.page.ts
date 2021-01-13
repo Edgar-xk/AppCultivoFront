@@ -7,6 +7,50 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  sectores;
+  constructor() {
+    
+  }
 
+  ngOnInit(){
+    this.sectores=[{
+      id : 1,
+      Nombre:"SectoraA",
+      Tipo: 1,
+      NumEspacios:2,
+      Espacios:[
+        {
+          _id:"3",
+          Nombre:"Frijol"
+        }
+      ]
+    },
+    {
+      id : 1,
+      Nombre:"SectoraA",
+      Tipo: 1,
+      NumEspacios:2,
+      Espacios:[
+        {
+          _id:"3",
+          Nombre:"Frijol"
+        },
+        {
+          _id:"3",
+          Nombre:"Arroz"
+        }
+      ]
+    }
+  ];
+    for(let sector of this.sectores){
+      console.log(sector.Espacios.length);
+      if(sector.Espacios.length<sector.NumEspacios){
+        sector.Espacios.push({_id:null,Nombre:"Modificar"});
+      }
+    }
+    console.log(this.sectores);
+
+   
+
+  }
 }
