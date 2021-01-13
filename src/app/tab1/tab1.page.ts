@@ -41,6 +41,8 @@ export class Tab1Page {
         }
       ]
     }
+    ,
+    
   ];
     for(let sector of this.sectores){
       console.log(sector.Espacios.length);
