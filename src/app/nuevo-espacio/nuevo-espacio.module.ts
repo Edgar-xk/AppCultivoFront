@@ -4,17 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NuevoEspacioPageRoutingModule } from './nuevo-espacio-routing.module';
-
-import { NuevoEspacioPage } from './nuevo-espacio.page';
+import { NuevoEspacioComponent } from './nuevo-espacio.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    NuevoEspacioPageRoutingModule
-  ],
-  declarations: [NuevoEspacioPage]
+  imports: [ CommonModule, FormsModule, IonicModule],
+  declarations: [NuevoEspacioComponent],
+  exports: [NuevoEspacioComponent]
 })
-export class NuevoEspacioPageModule {}
+export class NuevoEspacioComponentModule {}

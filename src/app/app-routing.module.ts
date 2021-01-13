@@ -11,9 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('./nuevo-sector/nuevo-sector.module').then( m => m.NuevoSectorPageModule)
   },
   {
-    path: 'nuevo-espacio',
-    loadChildren: () => import('./nuevo-espacio/nuevo-espacio.module').then( m => m.NuevoEspacioPageModule)
-  }
+    path: 'nuevo-espacio-page',
+    loadChildren: () => import('./nuevo-espacio-page/nuevo-espacio-page.module').then( m => m.NuevoEspacioPagePageModule)
+  },
+  
+ 
 ];
 @NgModule({
   imports: [
