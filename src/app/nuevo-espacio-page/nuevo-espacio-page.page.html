@@ -1,12 +1,90 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/tab1" ></ion-back-button>
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
     </ion-buttons>
-    <ion-title></ion-title>
+    <ion-title>Sector A</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Cultivo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha de Cultivo</ion-label>
+        <ion-datetime value={{fecha_actual}} display-timezone="utc"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha de cosecha sugerida</ion-label>
+        <ion-datetime value={{fecha_actual}} display-timezone="utc"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Agregar Abono</ion-label>
+        <ion-select placeholder="Seleccione" id="SelectAbono">
+          <ion-select-option value="1">Huerto</ion-select-option>
+          <ion-select-option value="2">Maseteros</ion-select-option>
+        </ion-select>
+        <ion-button (click)="agregarAbono()" color="success">Agregar</ion-button>
+      </ion-item>
+
+      
+      
+      <ion-item>
+        <ion-label>Agregar Fertilizante</ion-label>
+        <ion-select placeholder="Seleccione" id="SelectFertilizante">
+          <ion-select-option value="1">Huerto</ion-select-option>
+          <ion-select-option value="2">Maseteros</ion-select-option>
+        </ion-select>
+        <ion-button (click)="agregarAbono()" color="success">Agregar</ion-button>
+      </ion-item>
+
+      
+      
+     
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select placeholder="Seleccione" id="SelectTipo">
+          <ion-select-option value="1">Sol</ion-select-option>
+          <ion-select-option value="2">Sombra</ion-select-option>
+        </ion-select>
+        
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Cuidados"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Comentarios" id="ComentariosTxt"></ion-textarea>
+        <ion-button (click)="agregarComentario()" color="success">Agregar</ion-button>
+        
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="presentModal('Ver Abonos',1)">Abonos</ion-button>
+        <ion-button (click)="presentModal('Ver Fertilizantes',2)">Fertilizante</ion-button><br>
+        <ion-button (click)="presentModal('Ver Comentarios',3)">Comentarios</ion-button>
+      </ion-item>
+      
+
+
+
+
+        
+
+
+
+
+
+
+
+
+   
+      
+      <ion-button (click)="saludar()">Guardar</ion-button>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

@@ -14,7 +14,7 @@ export class Tab1Page {
 
   ngOnInit(){
     this.sectores=[{
-      id : 1,
+      _id : 1,
       Nombre:"SectoraA",
       Tipo: 1,
       NumEspacios:2,
@@ -26,8 +26,8 @@ export class Tab1Page {
       ]
     },
     {
-      id : 1,
-      Nombre:"SectoraA",
+      _id : 1,
+      Nombre:"SectoraB",
       Tipo: 1,
       NumEspacios:2,
       Espacios:[

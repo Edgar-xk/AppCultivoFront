@@ -12,7 +12,25 @@ const routes: Routes = [
   },
   {
     path: 'nuevo-espacio-page',
-    loadChildren: () => import('./nuevo-espacio-page/nuevo-espacio-page.module').then( m => m.NuevoEspacioPagePageModule)
+    children:[
+      {
+        path:"",
+        loadChildren: () => import('./nuevo-espacio-page/nuevo-espacio-page.module').then( m => m.NuevoEspacioPagePageModule)
+      },
+      {
+        path:":id",
+        loadChildren: () => import('./nuevo-espacio-page/nuevo-espacio-page.module').then( m => m.NuevoEspacioPagePageModule)
+      }
+    ]
+    
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  },
+  {
+    path: 'nuevo-abono',
+    loadChildren: () => import('./nuevo-abono/nuevo-abono.module').then( m => m.NuevoAbonoPageModule)
   },
   
  

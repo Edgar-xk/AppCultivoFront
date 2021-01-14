@@ -13,6 +13,6 @@ export class NuevoEspacioComponent implements OnInit {
 
   cambiar(){
     console.log(this.sector);
-   // window.location.href="/nuevo-sector-page";
+    window.location.href="/nuevo-espacio-page/"+this.sector._id;
   }
 }
