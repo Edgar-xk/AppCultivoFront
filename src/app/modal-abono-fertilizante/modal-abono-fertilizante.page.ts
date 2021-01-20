@@ -1,18 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.page.html',
-  styleUrls: ['./modal.page.scss'],
+  selector: 'app-modal-abono-fertilizante',
+  templateUrl: './modal-abono-fertilizante.page.html',
+  styleUrls: ['./modal-abono-fertilizante.page.scss'],
 })
-export class ModalPage implements OnInit {
+export class ModalAbonoFertilizantePage implements OnInit {
   @Input() data:Array<any>;
   @Input() op:number;
   @Input() title:String;
   constructor(public modalController: ModalController) { }
 
   ngOnInit() {
-    
   }
 
   dismissModal() {
@@ -25,8 +24,6 @@ export class ModalPage implements OnInit {
       'cerrar':true
     });
   }
-
-
   eliminarComentario(comentario,ev){
     
     
@@ -42,4 +39,10 @@ export class ModalPage implements OnInit {
       'cerrar':false
     });
   }
+
+
+
+
+
+  
 }

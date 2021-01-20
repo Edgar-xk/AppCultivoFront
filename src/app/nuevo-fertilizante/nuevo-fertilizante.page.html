@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab3" ></ion-back-button>
     </ion-buttons>
-    <ion-title>Nuevo Abono</ion-title>
+    <ion-title>Nuevo Fertilizante</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
   
     <ion-card-content>
       <ion-item>
-        <ion-input placeholder="Nombre del Abono"></ion-input>
+        <ion-input placeholder="Nombre del Fertilizante"></ion-input>
       </ion-item>
       
       <ion-item>
@@ -43,6 +43,9 @@
       <ion-item>
         <ion-label>Color</ion-label>
         <input type="color" id="ColorAbono" name="favcolor" value="#ff0000">
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Precauciones" id="NutrimentosTxt"></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-button (click)="presentModal('Ver Utilidades',1)">Utilidades</ion-button>

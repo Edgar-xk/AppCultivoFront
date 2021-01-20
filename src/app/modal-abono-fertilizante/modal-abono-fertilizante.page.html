@@ -8,12 +8,12 @@
 </ion-header>
 <ion-content fullscreen >
 
-  <ion-virtual-scroll [items]="data" approxItemHeight="200px" *ngIf="op==3">
+  <ion-virtual-scroll [items]="data" approxItemHeight="200px">
   
     <ion-item *virtualItem="let item">
      
-      <ion-label>{{item.comentario}}</ion-label>
-      <ion-button color="danger" class="BtnEliminar"(click)="eliminarComentario(item,ev)">Eliminar</ion-button>
+      <ion-label>{{item}}</ion-label>
+      <ion-button color="danger" class="BtnEliminar"(click)="eliminarComentario(item)">Eliminar</ion-button>
     </ion-item>
   
   </ion-virtual-scroll>

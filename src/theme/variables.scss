@@ -299,3 +299,17 @@
     --ion-card-background: #1e1e1e;
   }
 }
+
+.modal-wrapper {
+ 
+  position: absolute;
+  --max-height:50%;
+  top: 50%;
+  
+}
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+.my-custom-class .modal-wrapper {
+  background: #222;
+ 
+}

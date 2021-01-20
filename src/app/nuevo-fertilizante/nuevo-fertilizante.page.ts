@@ -3,12 +3,13 @@ import { ModalController } from '@ionic/angular';
 
 import { ModalAbonoFertilizantePage } from '../modal-abono-fertilizante/modal-abono-fertilizante.page';
 
+
 @Component({
-  selector: 'app-nuevo-abono',
-  templateUrl: './nuevo-abono.page.html',
-  styleUrls: ['./nuevo-abono.page.scss'],
+  selector: 'app-nuevo-fertilizante',
+  templateUrl: './nuevo-fertilizante.page.html',
+  styleUrls: ['./nuevo-fertilizante.page.scss'],
 })
-export class NuevoAbonoPage implements OnInit {
+export class NuevoFertilizantePage implements OnInit {
 
   utilidades:Array<String>;
   nutrimentos:Array<String>;
@@ -18,24 +19,25 @@ export class NuevoAbonoPage implements OnInit {
     this.utilidades=new Array<String>();
     this.nutrimentos=new Array<String>();
   }
+
+  agregarNutrimento(){
+    let nutrimento:String=(<HTMLInputElement>document.getElementById("NutrimentosTxt")).value;
+    console.log(nutrimento);
+    this.utilidades.push(nutrimento);
+    document.getElementById("NutrimentosTxt").setAttribute("value","");
+  }
   agregarUtilidad(){
     
     let utilidad:String=(<HTMLInputElement>document.getElementById("UtilidadesTxt")).value;
-   // console.log(utilidad);
-    this.utilidades.push(utilidad);
+    console.log(utilidad);
+    this.nutrimentos.push(utilidad);
     document.getElementById("UtilidadesTxt").setAttribute("value","");
 
 
   }
 
-  agregarNutrimento(){
-    let nutrimento:String=(<HTMLInputElement>document.getElementById("NutrimentosTxt")).value;
-    //console.log(nutrimento);
-    this.nutrimentos.push(nutrimento);
-    document.getElementById("NutrimentosTxt").setAttribute("value","");
-  }
 
-
+  
   async presentModal(title, op) {
     let data;
     if (op == 1) {
@@ -44,7 +46,7 @@ export class NuevoAbonoPage implements OnInit {
     if (op == 2) {
       data = this.nutrimentos;
     }
-    
+   
 
 
 
@@ -71,7 +73,4 @@ export class NuevoAbonoPage implements OnInit {
 
     return await modal.present();
   }
-
-
-
 }
