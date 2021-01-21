@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NuevoEspacioComponent implements OnInit {
   @Input() sector;
+  @Input()espacio;
   constructor() { }
 
   ngOnInit() {}

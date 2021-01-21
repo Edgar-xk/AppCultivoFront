@@ -7,7 +7,7 @@
       
       <button class="BtnEspacio" *ngIf="espacio._id!=null;else elseBlock">{{espacio.Nombre}}</button>
       <ng-template #elseBlock>
-        <nuevo-espacio [sector]="item"></nuevo-espacio>
+        <nuevo-espacio [sector]="item" ></nuevo-espacio>
       </ng-template>
      
     </div>

@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from "@angular/common";
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { runInThisContext } from 'vm';
+import { Abono } from '../Interfaces/Abono';
 
 import { ModalPage } from '../modal/modal.page';
+import { AbonoService } from '../Services/Abono/abono.service';
+import { SectorService } from '../Services/Sector/sector.service';
 
 
 @Component({
@@ -14,12 +19,14 @@ export class NuevoEspacioPagePage implements OnInit {
   id;
   fecha_actual;
 
+  abonosID;
+
   abonos;
   fertilizantes;
   comentarios;
+  SectorName:String;
 
-
-  constructor(private router: Router, private activateRoute: ActivatedRoute, public modalController: ModalController) {
+  constructor(private router: Router, private activateRoute: ActivatedRoute, public modalController: ModalController,private AbonoService:AbonoService,private SectorService:SectorService) {
 
   }
 
@@ -27,12 +34,31 @@ export class NuevoEspacioPagePage implements OnInit {
     this.comentarios = new Array();
     this.abonos = new Array();
     this.fertilizantes = new Array();
+    this.abonosID=new Array<Abono>();
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.id = paramMap.get("id");
     })
     this.fecha_actual = new Date();
+    this.AbonoService.ObtenerAbonos().subscribe(data=>{
+      console.log(data);
+
+      if(data!="Error"){
+          this.abonosID=data;
+      }
 
 
+
+    });
+
+    this.SectorService.GetSectorByID(this.id).subscribe(data=>{
+      if(data!="Error"){
+        this.SectorName=data.Nombre;
+      }
+    });
+
+
+    
+    
   }
   getFecha() {
     return this.fecha_actual;
@@ -41,10 +67,14 @@ export class NuevoEspacioPagePage implements OnInit {
   agregarAbono() {
     let selectAbono = (<HTMLInputElement>document.getElementById("SelectAbono")).value;
 
-    if (selectAbono != void (0))
+    if (selectAbono != void (0)){
       console.log(selectAbono);
+      this.abonos.push(selectAbono);
 
-    let cajaNuevoAbono = document.createElement("div");
+    }
+
+
+    console.log(this.abonos);
 
 
 
@@ -100,6 +130,9 @@ export class NuevoEspacioPagePage implements OnInit {
     document.getElementById("ComentariosTxt").setAttribute("value", "");
     console.log(this.comentarios);
 
+  }
+  private Guardar(){
+    
   }
 
 }

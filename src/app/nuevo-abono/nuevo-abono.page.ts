@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Abono } from '../Interfaces/Abono';
+import  { AbonoService } from '../Services/Abono/abono.service';
 
 import { ModalAbonoFertilizantePage } from '../modal-abono-fertilizante/modal-abono-fertilizante.page';
 
@@ -12,7 +14,7 @@ export class NuevoAbonoPage implements OnInit {
 
   utilidades:Array<String>;
   nutrimentos:Array<String>;
-  constructor(public modalController: ModalController) { }
+  constructor(public modalController: ModalController,private AbonoService:AbonoService) { }
 
   ngOnInit() {
     this.utilidades=new Array<String>();
@@ -73,5 +75,35 @@ export class NuevoAbonoPage implements OnInit {
   }
 
 
+  private Guardar(){
+    let info:Abono={
+      Nombre:(<HTMLInputElement>document.getElementById("NombreAbono")).value,
+      Tipo:parseInt((<HTMLInputElement>document.getElementById("SelectTipo")).value,10),
+      Utilidades:this.utilidades,
+      Nutrimentos:this.nutrimentos,
+      Periodicidad:{
+        num:parseInt((<HTMLInputElement>document.getElementById("PeriodicidadTxt")).value,10),
+        tipo:parseInt((<HTMLInputElement>document.getElementById("SelectTipo")).value,10)
+      },
+      Color:(<HTMLInputElement>document.getElementById("ColorAbono")).value
+    };
+
+    this.AbonoService.NuevoAbono(info).subscribe(data=>{
+      console.log(data);
+      this.BorrarCampos();
+
+    }) 
+
+  }
+
+  public BorrarCampos(){
+    (<HTMLInputElement>document.getElementById("NombreAbono")).value="";
+    (<HTMLInputElement>document.getElementById("SelectTipo")).value=null;
+    (<HTMLInputElement>document.getElementById("PeriodicidadTxt")).value="";
+    (<HTMLInputElement>document.getElementById("SelectTipo")).value=null;
+
+
+
+  }
 
 }

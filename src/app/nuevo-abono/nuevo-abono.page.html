@@ -13,7 +13,7 @@
   
     <ion-card-content>
       <ion-item>
-        <ion-input placeholder="Nombre del Abono"></ion-input>
+        <ion-input placeholder="Nombre del Abono" id="NombreAbono"></ion-input>
       </ion-item>
       
       <ion-item>
@@ -34,7 +34,7 @@
         
       </ion-item>
       <ion-item>
-        <ion-input placeholder="Periodicidad" type="number"></ion-input>
+        <ion-input placeholder="Periodicidad" type="number" id="PeriodicidadTxt"></ion-input>
         <ion-select placeholder="Mes/Dias" id="SelectTipo">
           <ion-select-option value="1">Días</ion-select-option>
           <ion-select-option value="2">Meses</ion-select-option>
@@ -42,14 +42,14 @@
       </ion-item>
       <ion-item>
         <ion-label>Color</ion-label>
-        <input type="color" id="ColorAbono" name="favcolor" value="#ff0000">
+        <input type="color" id="ColorAbono" name="favcolor" value="#ff0000" >
       </ion-item>
       <ion-item>
         <ion-button (click)="presentModal('Ver Utilidades',1)">Utilidades</ion-button>
         <ion-button (click)="presentModal('Ver Nutrimentos',2)">Nutrimentos</ion-button><br>
         
       </ion-item>
-      <ion-button (click)="saludar()">Guardar</ion-button>
+      <ion-button (click)="Guardar()">Guardar</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

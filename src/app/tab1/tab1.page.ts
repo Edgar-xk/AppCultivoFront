@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SectorService } from '../Services/Sector/sector.service';
 
 @Component({
   selector: 'app-tab1',
@@ -8,51 +9,39 @@ import { Component } from '@angular/core';
 export class Tab1Page {
 
   sectores;
-  constructor() {
-    
+  constructor(private SectorService: SectorService) {
+
   }
 
-  ngOnInit(){
-    this.sectores=[{
-      _id : 1,
-      Nombre:"SectoraA",
-      Tipo: 1,
-      NumEspacios:2,
-      Espacios:[
-        {
-          _id:"3",
-          Nombre:"Frijol"
-        }
-      ]
-    },
-    {
-      _id : 1,
-      Nombre:"SectoraB",
-      Tipo: 1,
-      NumEspacios:2,
-      Espacios:[
-        {
-          _id:"3",
-          Nombre:"Frijol"
-        },
-        {
-          _id:"3",
-          Nombre:"Arroz"
-        }
-      ]
-    }
-    ,
-    
-  ];
-    for(let sector of this.sectores){
-      console.log(sector.Espacios.length);
-      if(sector.Espacios.length<sector.NumEspacios){
-        sector.Espacios.push({_id:null,Nombre:"Modificar"});
-      }
-    }
-    console.log(this.sectores);
+  ngOnInit() {
 
-   
+    this.SectorService.GetSector().subscribe(data => {
+      console.log("Data");
+      console.log(data);
+      data.map(sector => {
+        console.log(sector.Espacios.length);
+        if (sector.Espacios.length < sector.NumEspacios) {
+          for(let i=1;i<=sector.NumEspacios;i++){
+            sector.Espacios.push({ _id: null, Nombre: "Modificar" });
+          }
+         
+        }
+
+      })
+
+
+
+      this.sectores = data;
+
+
+    });
+
+
+
+
+
+
+
 
   }
 }
