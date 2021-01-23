@@ -7,6 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen >
+  
 
   <ion-virtual-scroll [items]="data" approxItemHeight="200px" *ngIf="op==3">
   
@@ -17,4 +18,22 @@
     </ion-item>
   
   </ion-virtual-scroll>
+
+
+  <ion-virtual-scroll [items]="data1" approxItemHeight="200px" *ngIf="op==1">
+    
+    <ion-item *virtualItem="let abono">
+      
+      <ion-label>{{abono.Nombre}}</ion-label>
+      <ion-button color="danger" class="BtnEliminar"(click)="eliminarItem(abono._id)">Eliminar</ion-button>
+    </ion-item>
+  </ion-virtual-scroll>
+  <ion-virtual-scroll [items]="data1" approxItemHeight="200px" *ngIf="op==2">
+    <ion-item *virtualItem="let fertilizante1">
+     
+      <ion-label>{{fertilizante1.Nombre}}</ion-label>
+      <ion-button color="danger" class="BtnEliminar"(click)="eliminarItem(fertilizante1._id)">Eliminar</ion-button>
+    </ion-item>
+  </ion-virtual-scroll>
+
 </ion-content>

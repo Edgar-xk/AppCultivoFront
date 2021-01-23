@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Sector} from '../../Interfaces/sector';
+import {Sector,SectorL} from '../../Interfaces/sector';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +15,7 @@ export class SectorService {
   };
   
   public GetSector(){
-    return this.http.get<Array<Sector>>("http://localhost:4000/GetSectores");
+    return this.http.get<Array<SectorL>>("http://localhost:4000/GetSectores");
   }
   public GetSectorByID(id:String){
     return this.http.get<Sector>("http://localhost:4000/GetSectorById/"+id);

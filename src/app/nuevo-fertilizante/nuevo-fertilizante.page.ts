@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { FertilizanteN } from '../Interfaces/Fertilizante';
 
 import { ModalAbonoFertilizantePage } from '../modal-abono-fertilizante/modal-abono-fertilizante.page';
+import { FertilizanteService } from '../Services/Fertilizante/fertilizante.service';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class NuevoFertilizantePage implements OnInit {
 
   utilidades:Array<String>;
   nutrimentos:Array<String>;
-  constructor(public modalController: ModalController) { }
+  constructor(public modalController: ModalController,private FertilizanteService:FertilizanteService) { }
 
   ngOnInit() {
     this.utilidades=new Array<String>();
@@ -72,5 +74,36 @@ export class NuevoFertilizantePage implements OnInit {
     });
 
     return await modal.present();
+  }
+
+
+  private Guardar(){
+    let info:FertilizanteN={
+      Nombre:(<HTMLInputElement>document.getElementById("NombreFertilizante")).value,
+      Tipo:parseInt((<HTMLInputElement>document.getElementById("SelectTipo")).value,10),
+      Utilidades:this.utilidades,
+      Nutrimentos:this.nutrimentos,
+      Periodicidad:{
+        numero:parseInt((<HTMLInputElement>document.getElementById("NumberPeriodicidad")).value,10),
+        tipo:parseInt((<HTMLInputElement>document.getElementById("SelectTipoP")).value,10)
+      },
+      Color:(<HTMLInputElement>document.getElementById("ColorFertilizante")).value,
+      Precausiones:(<HTMLInputElement>document.getElementById("PrecaucionesTxt")).value
+      
+    }
+    this.FertilizanteService.NuevoFerttilizante(info).subscribe(data=>{
+      if(data!="Error"){
+        this.BorrarCampos();
+      }
+    })
+
+  }
+
+  private BorrarCampos(){
+    (<HTMLInputElement>document.getElementById("NombreFertilizante")).value="";
+    this.utilidades=new Array<String>();
+    this.nutrimentos=new Array<String>();
+    (<HTMLInputElement>document.getElementById("NumberPeriodicidad")).value="";
+    (<HTMLInputElement>document.getElementById("PrecaucionesTxt")).value="";
   }
 }

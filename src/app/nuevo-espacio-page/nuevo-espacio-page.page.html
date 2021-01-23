@@ -13,15 +13,15 @@
 
     <ion-card-content>
       <ion-item>
-        <ion-input placeholder="Cultivo"></ion-input>
+        <ion-input placeholder="Cultivo" id="NombreCultivo"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Fecha de Cultivo</ion-label>
-        <ion-datetime value={{fecha_actual}} display-timezone="utc"></ion-datetime>
+        <ion-datetime value={{fecha_actual}} display-timezone="utc" id="FechaCultivo"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Fecha de cosecha sugerida</ion-label>
-        <ion-datetime value={{fecha_actual}} display-timezone="utc"></ion-datetime>
+        <ion-datetime value={{fecha_actual}} display-timezone="utc" id="FechaCosecha"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Agregar Abono</ion-label>
@@ -37,10 +37,9 @@
       <ion-item>
         <ion-label>Agregar Fertilizante</ion-label>
         <ion-select placeholder="Seleccione" id="SelectFertilizante">
-          <ion-select-option value="1">Huerto</ion-select-option>
-          <ion-select-option value="2">Maseteros</ion-select-option>
+          <ion-select-option  *ngFor="let fertilizante of fertilizantesID" value={{fertilizante._id}}>{{fertilizante.Nombre}}</ion-select-option>
         </ion-select>
-        <ion-button (click)="agregarAbono()" color="success">Agregar</ion-button>
+        <ion-button (click)="agregarFertilizante()" color="success">Agregar</ion-button>
       </ion-item>
 
       
@@ -55,7 +54,7 @@
         
       </ion-item>
       <ion-item>
-        <ion-textarea placeholder="Cuidados"></ion-textarea>
+        <ion-textarea placeholder="Cuidados" id="CuidadosTxt"></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-textarea placeholder="Comentarios" id="ComentariosTxt"></ion-textarea>

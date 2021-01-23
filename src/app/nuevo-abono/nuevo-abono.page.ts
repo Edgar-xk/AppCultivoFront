@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Abono } from '../Interfaces/Abono';
+import { AbonoN,Abono } from '../Interfaces/Abono';
 import  { AbonoService } from '../Services/Abono/abono.service';
 
 import { ModalAbonoFertilizantePage } from '../modal-abono-fertilizante/modal-abono-fertilizante.page';
@@ -76,7 +76,7 @@ export class NuevoAbonoPage implements OnInit {
 
 
   private Guardar(){
-    let info:Abono={
+    let info:AbonoN={
       Nombre:(<HTMLInputElement>document.getElementById("NombreAbono")).value,
       Tipo:parseInt((<HTMLInputElement>document.getElementById("SelectTipo")).value,10),
       Utilidades:this.utilidades,
@@ -101,7 +101,8 @@ export class NuevoAbonoPage implements OnInit {
     (<HTMLInputElement>document.getElementById("SelectTipo")).value=null;
     (<HTMLInputElement>document.getElementById("PeriodicidadTxt")).value="";
     (<HTMLInputElement>document.getElementById("SelectTipo")).value=null;
-
+    this.utilidades=new Array<String>();
+    this.nutrimentos=new Array<String>();
 
 
   }
