@@ -14,6 +14,7 @@ export class NuevoEspacioComponent implements OnInit {
 
   cambiar(){
     console.log(this.sector);
-    window.location.href="/nuevo-espacio-page/"+this.sector._id;
+    localStorage.setItem("info",JSON.stringify(this.sector));
+    window.location.href="/nuevo-espacio-page/"+this.sector.item._id;
   }
 }

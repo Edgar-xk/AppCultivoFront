@@ -11,6 +11,7 @@ import { SectorService } from '../Services/Sector/sector.service';
 import { FertilizanteService } from '../Services/Fertilizante/fertilizante.service';
 import { EspacioN } from '../Interfaces/Espacio';
 import { Fertilizante } from '../Interfaces/Fertilizante';
+import { EspacioService } from '../Services/Espacio/espacio.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ import { Fertilizante } from '../Interfaces/Fertilizante';
   styleUrls: ['./nuevo-espacio-page.page.scss'],
 })
 export class NuevoEspacioPagePage implements OnInit {
-  id;
+  idSector;
+  indexEspacio;
   fecha_actual;
 
   abonosID;
@@ -36,6 +38,7 @@ export class NuevoEspacioPagePage implements OnInit {
     public modalController: ModalController,
     private AbonoService: AbonoService,
     private SectorService: SectorService,
+    private EspacioService:EspacioService,
     private FertilizanteService: FertilizanteService) {
 
   }
@@ -46,8 +49,10 @@ export class NuevoEspacioPagePage implements OnInit {
     this.fertilizantes = new Array();
     this.abonosID = new Array<Abono>();
     this.activateRoute.paramMap.subscribe(paramMap => {
-      this.id = paramMap.get("id");
+      this.idSector = paramMap.get("id");
     })
+    this.indexEspacio=JSON.parse(localStorage.getItem("info")).index;
+
     this.fecha_actual = new Date();
     this.AbonoService.ObtenerAbonos().subscribe(data => {
       //console.log(data);
@@ -66,7 +71,7 @@ export class NuevoEspacioPagePage implements OnInit {
 
     });
 
-    this.SectorService.GetSectorByID(this.id).subscribe(data => {
+    this.SectorService.GetSectorByID(this.idSector).subscribe(data => {
       if (typeof (data) != typeof (String)) {
         this.SectorName = data.Nombre;
       }
@@ -118,7 +123,7 @@ export class NuevoEspacioPagePage implements OnInit {
 
 
 
-    let data,data1;
+    let data, data1;
     if (op == 1) {
       data = this.abonos;
     }
@@ -141,8 +146,8 @@ export class NuevoEspacioPagePage implements OnInit {
           this.Abonos.push(abono);
         });
       });
-      data1=this.Abonos;
-      
+      data1 = this.Abonos;
+
     }
     if (op == 2) {
 
@@ -153,8 +158,8 @@ export class NuevoEspacioPagePage implements OnInit {
         });
 
       });
-      data1=this.Fertilizantes;
-      
+      data1 = this.Fertilizantes;
+
     }
 
 
@@ -168,79 +173,83 @@ export class NuevoEspacioPagePage implements OnInit {
 
 
 
-    
-  
 
 
-  const modal = await this.modalController.create({
-    component: ModalPage,
-    cssClass: 'my-custom-class',
-    componentProps: {
-      'op': op,
-      'data': data,
-      'title': title,
-      'data1':data1
-    }
-  });
 
 
-  modal.onDidDismiss().then((dataReturned) => {
-    if (dataReturned !== null) {
-      console.log(dataReturned.data.data);
-      if (!dataReturned.data.cerrar) {
-        this.presentModal(dataReturned.data.title, dataReturned.data.op)
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        'op': op,
+        'data': data,
+        'title': title,
+        'data1': data1
       }
-      //alert('Modal Sent Data :'+ dataReturned);
-    }
-  });
-
-return await modal.present();
-  }
-
-agregarFertilizante() {
-  let SelectFertilizante = (<HTMLInputElement>document.getElementById("SelectFertilizante")).value;
-
-  if (SelectFertilizante != void (0)) {
-    console.log(SelectFertilizante);
-    this.fertilizantes.push({
-      _id: SelectFertilizante,
-      fecha: this.getFecha()
     });
 
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        console.log(dataReturned.data.data);
+        if (!dataReturned.data.cerrar) {
+          this.presentModal(dataReturned.data.title, dataReturned.data.op)
+        }
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+
+    return await modal.present();
   }
-}
+
+  agregarFertilizante() {
+    let SelectFertilizante = (<HTMLInputElement>document.getElementById("SelectFertilizante")).value;
+
+    if (SelectFertilizante != void (0)) {
+      console.log(SelectFertilizante);
+      this.fertilizantes.push({
+        _id: SelectFertilizante,
+        fecha: this.getFecha()
+      });
+
+    }
+  }
 
 
-agregarComentario() {
-  let comentario: String = (<HTMLInputElement>document.getElementById("ComentariosTxt")).value;
-  let fecha: Date = new Date();
+  agregarComentario() {
+    let comentario: String = (<HTMLInputElement>document.getElementById("ComentariosTxt")).value;
+    let fecha: Date = new Date();
 
-  this.comentarios.push({
-    comentario: comentario,
-    fecha: fecha
-  });
-  document.getElementById("ComentariosTxt").setAttribute("value", "");
-  console.log(this.comentarios);
+    this.comentarios.push({
+      comentario: comentario,
+      fecha: fecha
+    });
+    document.getElementById("ComentariosTxt").setAttribute("value", "");
+    console.log(this.comentarios);
 
-}
+  }
   private Guardar() {
-  let fecha_Cultivo = (<HTMLInputElement>document.getElementById("FechaCultivo")).value;
-  let fecha_cosecha = (<HTMLInputElement>document.getElementById("FechaCosecha")).value;
+    let fecha_Cultivo = (<HTMLInputElement>document.getElementById("FechaCultivo")).value;
+    let fecha_cosecha = (<HTMLInputElement>document.getElementById("FechaCosecha")).value;
+
+    
+
+    let info: EspacioN = {
+      Nombre: (<HTMLInputElement>document.getElementById("NombreCultivo")).value,
+      FechaCultivo: new Date(fecha_Cultivo),
+      FechaCosecha: new Date(fecha_cosecha),
+      Abonos: this.abonos,
+      Fertilizante: this.fertilizantes,
+      Tipo: parseInt((<HTMLInputElement>document.getElementById("SelectTipo")).value, 10),
+      Cuidados: (<HTMLInputElement>document.getElementById("CuidadosTxt")).value,
+      Comentarios: this.comentarios
+
+    }
+
+    this.EspacioService.GuardarEspacio(info,this.idSector,this.indexEspacio);
 
 
-  let info: EspacioN = {
-    Nombre: (<HTMLInputElement>document.getElementById("NombreCultivo")).value,
-    FechaCultivo: new Date(fecha_Cultivo),
-    FechaCosecha: new Date(fecha_cosecha),
-    Abonos: this.abonos,
-    Fertilizante: this.fertilizantes,
-    Tipo: parseInt((<HTMLInputElement>document.getElementById("SelectTipo")).value, 10),
-    Cuidados: (<HTMLInputElement>document.getElementById("CuidadosTxt")).value,
-    Comentarios: this.comentarios
 
   }
-
-
-}
 
 }

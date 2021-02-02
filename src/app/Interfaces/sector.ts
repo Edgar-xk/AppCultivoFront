@@ -6,6 +6,7 @@ export interface Sector {
 }
 
 export interface SectorL {
+  _id
   Nombre:String,
     Tipo:Number
     NumEspacios:Number

@@ -20,6 +20,10 @@ export class SectorService {
   public GetSectorByID(id:String){
     return this.http.get<Sector>("http://localhost:4000/GetSectorById/"+id);
   }
+  public UpdateSector(id:String,info:SectorL){
+      return this.http.put<String>("http://localhost:4000/UpdateSector",{data:info})
+
+  }
 
 }
 
