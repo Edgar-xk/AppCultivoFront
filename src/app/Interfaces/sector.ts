@@ -11,7 +11,7 @@ export interface SectorL {
     Tipo:Number
     NumEspacios:Number
     Espacios:[{
-      _id,
+      _id1,
       Nombre
     }]
 }

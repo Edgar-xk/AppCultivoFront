@@ -25,6 +25,18 @@ export class Tab1Page {
 
 
   }
+
+
+  verEspacio(id){
+    localStorage.setItem("IdEspacio",id);
+    window.location.href="/ver-espacio";
+  }
+
+
+
+
+
+
   iniciarAPP(){
     this.SectorService.GetSector().subscribe(data => {
       console.log("Data");
@@ -34,7 +46,7 @@ export class Tab1Page {
         //console.log(sector.Espacios.length);
         if (sector.Espacios.length < sector.NumEspacios) {
           for(let i=1;i<=sector.NumEspacios;i++){
-            sector.Espacios.push({ _id: null, Nombre: "Modificar" });
+            sector.Espacios.push({ _id1: null, Nombre: "Modificar" });
           }
          
         }

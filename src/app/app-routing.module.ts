@@ -40,6 +40,14 @@ const routes: Routes = [
     path: 'modal-abono-fertilizante',
     loadChildren: () => import('./modal-abono-fertilizante/modal-abono-fertilizante.module').then( m => m.ModalAbonoFertilizantePageModule)
   },
+  {
+    path: 'ver-espacio',
+    loadChildren: () => import('./espacio/ver-espacio/ver-espacio.module').then( m => m.VerEspacioPageModule)
+  },
+  {
+    path: 'modal-info',
+    loadChildren: () => import('./Espacio/modal-info/modal-info.module').then( m => m.ModalInfoPageModule)
+  },
   
  
 ];

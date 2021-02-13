@@ -10,7 +10,7 @@
 
       <div *ngFor="let espacio of item.Espacios; index as i" class="ContainerE">
 
-        <button class="BtnEspacio" *ngIf="espacio._id!=null;else elseBlock">{{espacio.Nombre}}</button>
+        <button class="BtnEspacio" *ngIf="espacio._id!=null;else elseBlock" (click)="verEspacio(espacio._id)">{{espacio.Nombre}}</button>
         <ng-template #elseBlock>
           <nuevo-espacio [sector]="{item:item,index:i}"></nuevo-espacio>
         </ng-template>

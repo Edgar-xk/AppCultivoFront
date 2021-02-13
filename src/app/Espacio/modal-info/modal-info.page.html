@@ -1,0 +1,41 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen >
+
+
+  <ion-virtual-scroll [items]="data" approxItemHeight="200px" *ngIf="op==3" >
+  
+    <ion-item *virtualItem="let item">
+     
+      <ion-label>{{item.comentario}}</ion-label>
+      <ion-datetime value={{item.fecha}} display-timezone="utc" ></ion-datetime>
+    </ion-item>
+  
+  </ion-virtual-scroll>
+
+
+  <ion-virtual-scroll [items]="data" approxItemHeight="200px" *ngIf="op==1">
+    
+    <ion-item *virtualItem="let abono">
+      
+      <ion-label>{{abono.info.Nombre}}</ion-label>
+      <ion-datetime value={{abono.fecha}} display-timezone="utc" ></ion-datetime>
+    </ion-item>
+  </ion-virtual-scroll>
+
+
+  <ion-virtual-scroll [items]="data" approxItemHeight="200px" *ngIf="op==2">
+    <ion-item *virtualItem="let fertilizante1">
+     
+      <ion-label>{{fertilizante1.info.Nombre}}</ion-label>
+      <ion-datetime value={{fertilizante1.fecha}} display-timezone="utc" ></ion-datetime>
+    </ion-item>
+  </ion-virtual-scroll>
+  
+</ion-content>
