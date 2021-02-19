@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { VerEspacioPageRoutingModule } from './ver-espacio-routing.module';
 
 import { VerEspacioPage } from './ver-espacio.page';
-import {ModalInfoPageModule} from '../modal-info/modal-info.module';
-import {ModalInfoPage} from '../modal-info/modal-info.page';
+
+
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import {ModalInfoPage} from '../modal-info/modal-info.page';
     FormsModule,
     IonicModule,
     VerEspacioPageRoutingModule,
-    ModalInfoPageModule
+    
     
   ],
   declarations: [VerEspacioPage],

@@ -15,6 +15,24 @@
     font-size: 15px;
     color: rgb(255,255,255);
 }
+.BtnEspacioMaseta{
+    width: 50px;
+    height: 50px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #5cb85c;
+    border-style: solid;
+    border-color: black;
+    margin: 5px;
+    font-size: 15px;
+    color: rgb(255,255,255);
+    display: inline;
+}
+.ContainerEspacioMaseta{
+    width: 95%;
+    display: inline;
+}
 .ContainerE{
     width: 95%;
 }

@@ -48,6 +48,11 @@ export class NuevoEspacioPagePage implements OnInit {
     this.abonos = new Array();
     this.fertilizantes = new Array();
     this.abonosID = new Array<Abono>();
+
+
+    
+
+
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idSector = paramMap.get("id");
     })
@@ -74,6 +79,10 @@ export class NuevoEspacioPagePage implements OnInit {
     this.SectorService.GetSectorByID(this.idSector).subscribe(data => {
       if (typeof (data) != typeof (String)) {
         this.SectorName = data.Nombre;
+
+        if(data.Tipo==2){
+          document.getElementById("FechaCosechaC").classList.add("d-none");
+        }
       }
     });
 

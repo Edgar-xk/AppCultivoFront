@@ -6,7 +6,7 @@ import { Fertilizante } from 'src/app/Interfaces/Fertilizante';
 import { AbonoService } from 'src/app/Services/Abono/abono.service';
 import { EspacioService } from 'src/app/Services/Espacio/espacio.service';
 import { FertilizanteService } from 'src/app/Services/Fertilizante/fertilizante.service';
-import {ModalInfoPage} from '../modal-info/modal-info.page';
+import {InfoWindowPage} from '../../info-window/info-window.page';
 
 
 @Component({
@@ -36,6 +36,13 @@ export class VerEspacioPage implements OnInit {
   }
 
   ngOnInit() {
+
+
+    if(parseInt( localStorage.getItem("Tipo"))==2){
+      document.getElementById("FechaCosechaC").classList.add("d-none");
+    }
+
+
     let result = this.espacioService.GetEspacioById(localStorage.getItem("IdEspacio"));
     result.subscribe(data => {
       if (data._id != null && data._id != void (0)) {
@@ -103,7 +110,7 @@ export class VerEspacioPage implements OnInit {
     }
     
     const modal = await this.modalController.create({
-      component: ModalInfoPage,
+      component: InfoWindowPage,
       cssClass: 'my-custom-class',
       componentProps: {
         'op': tipo,

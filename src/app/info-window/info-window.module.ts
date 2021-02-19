@@ -4,20 +4,20 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalInfoPageRoutingModule } from './modal-info-routing.module';
+import { InfoWindowPageRoutingModule } from './info-window-routing.module';
 
-import { ModalInfoPage } from './modal-info.page';
-
-
+import { InfoWindowPage } from './info-window.page';
 
 @NgModule({
   imports: [
-   
     CommonModule,
     FormsModule,
     IonicModule,
-    ModalInfoPageRoutingModule
+    InfoWindowPageRoutingModule
   ],
-  declarations: [ModalInfoPage]
+  declarations: [InfoWindowPage],
+  exports:[
+    InfoWindowPage
+  ]
 })
-export class ModalInfoPageModule {}
+export class InfoWindowPageModule {}

@@ -10,7 +10,7 @@
 
       <div *ngFor="let espacio of item.Espacios; index as i" class="ContainerE">
 
-        <button class="BtnEspacio" *ngIf="espacio._id!=null;else elseBlock" (click)="verEspacio(espacio._id)">{{espacio.Nombre}}</button>
+        <button class="BtnEspacio" *ngIf="espacio._id!=null;else elseBlock" (click)="verEspacio(espacio._id,item.Tipo)">{{espacio.Nombre}}</button>
         <ng-template #elseBlock>
           <nuevo-espacio [sector]="{item:item,index:i}"></nuevo-espacio>
         </ng-template>
@@ -20,6 +20,32 @@
         <button class="SectorTitle">{{item.Nombre}}</button>
       </div>
 
+
+
+
+
+
+
+    </div>
+    <div class="SectorC" *ngFor="let item of maseteros">
+
+
+      <div *ngFor="let espacio of item.Espacios; index as i" class="ContainerEspacioMaseta">
+
+        <button class="BtnEspacioMaseta" *ngIf="espacio._id1!=null;else elseBlock" (click)="verEspacio(espacio._id1,item.Tipo)">{{espacio.Nombre[0].toUpperCase()}}</button>
+        <ng-template #elseBlock>
+         
+          <nuevo-espacio [sector]="{item:item,index:i}"></nuevo-espacio>
+        </ng-template>
+
+      </div>
+      <div class="BtnTitle">
+        <button class="SectorTitle">{{item.Nombre}}</button>
+      </div>
+
+
+
+      
     </div>
     
 

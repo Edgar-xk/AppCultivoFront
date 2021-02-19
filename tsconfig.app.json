@@ -6,12 +6,17 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "src/environments/environment.ts",
+    "src/app/app.module.ts",
+    "src/app/app.component.ts"
+    
   ],
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "../node_modules/@wtw/**/*"
+    "../node_modules/@wtw/**/*",
+   
   ],
   "exclude": [
     "src/**/*.spec.ts"

@@ -9,12 +9,13 @@ import { SectorService } from '../Services/Sector/sector.service';
 export class Tab1Page {
   voidV;
   sectores;
+  maseteros;
   constructor(private SectorService: SectorService) {
 
   }
 
   ngOnInit() {
-
+    localStorage.clear();
     this.voidV=void(0);
 
     this.iniciarAPP();
@@ -27,7 +28,8 @@ export class Tab1Page {
   }
 
 
-  verEspacio(id){
+  verEspacio(id,tipo){
+    localStorage.setItem("Tipo",tipo);
     localStorage.setItem("IdEspacio",id);
     window.location.href="/ver-espacio";
   }
@@ -38,6 +40,8 @@ export class Tab1Page {
 
 
   iniciarAPP(){
+    this.sectores=new Array();
+    this.maseteros=new Array();
     this.SectorService.GetSector().subscribe(data => {
       console.log("Data");
       console.log(data);
@@ -50,12 +54,19 @@ export class Tab1Page {
           }
          
         }
+        if(sector.Tipo==1){
+          this.sectores.push(sector);
+        }else{
+          this.maseteros.push(sector);
+        }
+        
 
       })
 
 
 
-      this.sectores = data;
+      
+      
 
 
     });

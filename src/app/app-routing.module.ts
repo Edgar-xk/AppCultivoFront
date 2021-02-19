@@ -44,9 +44,11 @@ const routes: Routes = [
     path: 'ver-espacio',
     loadChildren: () => import('./espacio/ver-espacio/ver-espacio.module').then( m => m.VerEspacioPageModule)
   },
+  
+ 
   {
-    path: 'modal-info',
-    loadChildren: () => import('./Espacio/modal-info/modal-info.module').then( m => m.ModalInfoPageModule)
+    path: 'info-window',
+    loadChildren: () => import('./info-window/info-window.module').then( m => m.InfoWindowPageModule)
   },
   
  
