@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'info-window',
     loadChildren: () => import('./info-window/info-window.module').then( m => m.InfoWindowPageModule)
   },
+  {
+    path: 'nueva-plaga',
+    loadChildren: () => import('./nueva-plaga/nueva-plaga.module').then( m => m.NuevaPlagaPageModule)
+  },
   
  
 ];

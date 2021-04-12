@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar Plaga</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Nombre de la plaga" id="NombrePlaga"></ion-input>
+      </ion-item>
+      
+      
+      <ion-item>
+        <ion-textarea placeholder="Descripción" id="DescripcionTxt"></ion-textarea>
+       
+        
+      </ion-item>
+      <ion-item>
+        <div id="RemediosDiv">
+          <ion-textarea placeholder="Remedio" id="RemediosTxt"></ion-textarea>
+       </div>
+        <div>
+      
+      
+        <ion-input placeholder="Periodicidad" type="number" id="PeriodicidadTxt"></ion-input>
+        <ion-select placeholder="Mes/Dias" id="SelectTipo">
+          <ion-select-option value="1">Días</ion-select-option>
+          <ion-select-option value="2">Meses</ion-select-option>
+        </ion-select>
+       
+        <ion-button (click)="agregarRemedio()" color="success">Agregar</ion-button>
+      </div>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="verRemedios()">Remedios</ion-button>
+        
+        
+      </ion-item>
+      <ion-button (click)="Guardar()">Guardar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

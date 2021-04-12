@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ver remedios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-virtual-scroll [items]="data" approxItemHeight="200px" >
+  
+    <ion-item *virtualItem="let item">
+     
+      <ion-label>{{item.nombre}}</ion-label>
+      <ion-label>{{item.periodicidad}}</ion-label>
+      <ion-button color="danger" class="BtnEliminar"(click)="eliminar(item,ev)">Eliminar</ion-button>
+    </ion-item>
+  
+  </ion-virtual-scroll>
+</ion-content>
